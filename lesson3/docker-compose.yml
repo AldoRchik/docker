@@ -1,0 +1,15 @@
+version: '3'
+services:
+  weather:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: final:2.0
+    container_name: final2
+    ports:
+      - 5000:80
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
