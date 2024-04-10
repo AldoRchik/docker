@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nginx-w:
+    build:
+      context: ./
+      dockerfile: nginx.Dockerfile
+    image: nginx:1.18.0
+    container_name: nw
+    ports:
+      - 5000:80
+    volumes:
+      - ./nw.conf:/etc/nginx/sites-available/nw.conf
+    depends_on:
+      - weather
+
+  weather:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: weather:1.0
+    container_name: weather
